@@ -1,13 +1,17 @@
 RESTful_Java
 ============
 
-Implementação da Arquitetura RESTful em Java
+Implementação da Arquitetura RESTful em Java 
+
+------------------------------------
 
 Exemplo de Uso:
 
 Depois de executar a classe Teste, coloque a seguinte URL no navegador:
 
 http://127.0.0.1:4567/celulares/android
+
+-----------------------------------
 
 As seguintes bibliotecas são necessárias:
 
@@ -20,6 +24,8 @@ As seguintes bibliotecas são necessárias:
  - slf4j-log4j12-1.6.1.jar
  - spark-0.9.9-SNAPSHOT.jar
 
-* Copyright 2014 Giuliano Bertoti 
-* Released under the MIT license 
-* github.com/giulianobertoti
+------------------------------------
+
+Copyright 2014 Giuliano Bertoti 
+Released under the MIT license 
+github.com/giulianobertoti
