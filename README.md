@@ -11,7 +11,7 @@ Execute the Test class, and then put into the browser:
 
 http://127.0.0.1:4567/phones/android
 
-The responde must be:
+The response must be:
 
 [{"model":"Galaxy","price":1400,"color":"Silver","brand":"Samsung","OS":"android"},{"model":"Galaxy","price":1400,"color":"Silver","brand":"Samsung","OS":"android"}]
 
