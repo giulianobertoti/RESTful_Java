@@ -1,3 +1,9 @@
+/*
+* Copyright 2014 Giuliano Bertoti 
+* Released under the MIT license 
+* github.com/giulianobertoti
+*/
+
 import static spark.Spark.get;
 
 import org.json.JSONArray;
@@ -26,35 +32,35 @@ import spark.*;
 
 public class Rest {
 	
-	private Loja loja;
+	private Store store;
 	
 	public Rest(){
-		loja = new Loja();
+		store = new Store();
 	}
 	
 	
-	public void getCelular() throws JSONException{
+	public void getPhone() throws JSONException{
 		
-		get(new Route("/celulares/:so") {
+		get(new Route("/phones/:os") {
 	         @Override
 	         public Object handle(Request request, Response response) {
 	        	
 	        	
 	        	 
-	     	    ObjectSet result = loja.buscarCelularSo(request.params(":so"));
+	     	    ObjectSet result = store.searchPhoneByOS(request.params(":os"));
 	     		
 	     	    JSONArray jsonResult = new JSONArray();
 	     	    
 	     	    for(Object i: result){
-	     	    	Celular cel = (Celular)i;
+	     	    	Phone cel = (Phone)i;
 	     	    	JSONObject jsonObj = new JSONObject();
 	     	    	
 	     	    	try {
-						jsonObj.put("preco", cel.getPreco());
-						jsonObj.put("cor", cel.getCor());
-		     	    	jsonObj.put("so", cel.getSo());
-		     	    	jsonObj.put("marca", cel.getEsp().getMarca());
-		     	    	jsonObj.put("modelo", cel.getEsp().getModelo());
+						jsonObj.put("price", cel.getPrice());
+						jsonObj.put("color", cel.getColor());
+		     	    	jsonObj.put("OS", cel.getOS());
+		     	    	jsonObj.put("brand", cel.getSpec().getBrand());
+		     	    	jsonObj.put("model", cel.getSpec().getModel());
 		     	    	jsonResult.put(jsonObj);
 					} catch (JSONException e) {
 						
@@ -71,10 +77,10 @@ public class Rest {
 	}
 	
 	
-	public void inicializarEstoque(){
-		loja.adicionarCelular(new Celular(2000.0, "Prata", "ios", new Espec(Marca.Apple, "iPhone4")));
-  		loja.adicionarCelular(new Celular(1400.0, "Prata", "android", new Espec(Marca.Samsung, "Galaxy")));
-  		loja.adicionarCelular(new Celular(1400.0, "Prata", "android", new Espec(Marca.Samsung, "Galaxy")));
+	public void initializeStore(){
+		store.addPhone(new Phone(2000.0, "Silver", "ios", new Specification(Brand.Apple, "iPhone4")));
+  		store.addPhone(new Phone(1400.0, "Silver", "android", new Specification(Brand.Samsung, "Galaxy")));
+  		store.addPhone(new Phone(1400.0, "Silver", "android", new Specification(Brand.Samsung, "Galaxy")));
 	}
 
 }
