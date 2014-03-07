@@ -1,19 +1,19 @@
-RESTful_Java
+RESTful-Java
 ============
 
-Implementação da Arquitetura RESTful em Java 
+A full and simple RESTful architecture server implemented in Java
 
 ------------------------------------
 
-Exemplo de Uso:
+how to use:
 
-Depois de executar a classe Teste, coloque a seguinte URL no navegador:
+Execute the Test class, and then put into the browser:
 
-http://127.0.0.1:4567/celulares/android
+http://127.0.0.1:4567/phones/android
 
 -----------------------------------
 
-As seguintes bibliotecas são necessárias:
+The following libraries are required:
 
  - db4o-8.0.249.16098-all-java5.jar
  - jetty-6.0.0beta6.jar
