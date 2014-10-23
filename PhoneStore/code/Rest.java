@@ -17,19 +17,6 @@ import spark.Route;
 import com.db4o.ObjectSet;
 
 
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import com.db4o.Db4oEmbedded;
-import com.db4o.ObjectContainer;
-import com.db4o.ObjectSet;
-
-import static spark.Spark.*;
-import spark.*;
-
 public class Rest {
 	
 	private Store store;
@@ -45,16 +32,19 @@ public class Rest {
 	         @Override
 	         public Object handle(Request request, Response response) {
 	        	
+	        	//allows everyone to access the resource
+	            response.header("Access-Control-Allow-Origin", "*");
 	        	
+	            
 	        	 
 	     	    ObjectSet result = store.searchPhoneByOS(request.params(":os"));
 	     		
 	     	    JSONArray jsonResult = new JSONArray();
 	     	    
+	     	    
 	     	    for(Object i: result){
 	     	    	Phone cel = (Phone)i;
 	     	    	JSONObject jsonObj = new JSONObject();
-	     	    	
 	     	    	try {
 						jsonObj.put("price", cel.getPrice());
 						jsonObj.put("color", cel.getColor());
@@ -77,8 +67,12 @@ public class Rest {
 	}
 	
 	
+	
 	public void initializeStore(){
 		store.addPhone(new Phone(2000.0, "Silver", "ios", new Specification(Brand.Apple, "iPhone4")));
+  		store.addPhone(new Phone(1400.0, "Silver", "android", new Specification(Brand.Samsung, "Galaxy")));
+  		store.addPhone(new Phone(1400.0, "Silver", "android", new Specification(Brand.Samsung, "Galaxy")));
+  		store.addPhone(new Phone(2000.0, "Silver", "ios", new Specification(Brand.Apple, "iPhone4")));
   		store.addPhone(new Phone(1400.0, "Silver", "android", new Specification(Brand.Samsung, "Galaxy")));
   		store.addPhone(new Phone(1400.0, "Silver", "android", new Specification(Brand.Samsung, "Galaxy")));
 	}

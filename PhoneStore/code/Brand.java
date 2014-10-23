@@ -6,6 +6,15 @@
 
 public enum Brand {
 
-	Samsung, Apple, Sony, Nokia
+	Samsung, Apple, Sony, Nokia;
+	
+	public static Brand getValueByString(String value){
+		for(Brand brand: Brand.values() ){
+			if(value.equalsIgnoreCase(brand.toString())){
+				return brand;
+			}
+		}
+		return null;
+	}
 	
 }

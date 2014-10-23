@@ -16,7 +16,6 @@ public class Test {
 		
 		rest.getPhone();
   		
-		
 	}
 	
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JSON Request Sample from a RESTful Web Service</title>
+    
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+	<script>
+
+		$(document).ready(function(){
+						
+						$.getJSON("http://127.0.0.1:4567/phones/android?format=json&jsoncallback=", function(data) {
+								var items = [];
+								items.push("<thead><td class='cabecalho' colspan='7' >Celphones</td><thead>");
+								items.push("<tr><th>model</th><th>price</th><th>color</th><th>brand</th><th>os</th><th colspan=2></th></tr>");
+								$.each(data, function(key, val){
+										items.push("<tr>");
+										items.push("<td id='" + key + "'>" + JSON.stringify(val.model).replace(/\"/,'').replace(/\"/,'') + "</td>");
+										items.push("<td>" + JSON.stringify(val.price) + "</td>");
+										items.push("<td>" + JSON.stringify(val.color).replace(/\"/,'').replace(/\"/,'') + "</td>");
+										items.push("<td>" + JSON.stringify(val.brand).replace(/\"/,'').replace(/\"/,'') + "</td>");
+										items.push("<td>" + JSON.stringify(val.OS).replace(/\"/,'').replace(/\"/,'') + "</td>");
+										items.push("</tr>");
+								});
+								
+								$("<table />", {"id": "data","border":"1","align":"center", html: items.join("")}).appendTo("body");
+								
+    
+						});
+						
+		});
+			
+			
+
+		
+
+	</script>
+
+    <style type="text/css">
+		.cabecalho{
+			font-weight: bold;
+			text-align: center;
+		}
+		h3{
+			text-align: center;
+		}
+    </style>
+  </head>
+  <body>
+	<h3>Formatando seu JSON e inserindo seus dados em tabela</h3>
+  </body>
+</html>
